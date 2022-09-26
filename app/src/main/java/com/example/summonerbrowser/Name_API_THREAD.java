@@ -27,6 +27,9 @@ public class Name_API_THREAD extends Thread implements Runnable{
 
     public String Summoners_tier = null;
     public String Summoners_rank = null;
+    public int Summoners_win = 0;
+    public int Summoners_losses = 0;
+
     public String TOKEN = BuildConfig.RIOT_API_KEY;
 
     public Name_API_THREAD(String summonerName){
@@ -44,6 +47,12 @@ public class Name_API_THREAD extends Thread implements Runnable{
     }
     public String getSummonersRank(){
         return Summoners_rank;
+    }
+    public int getSummonersWin(){
+        return Summoners_win;
+    }
+    public int getSummonersLose(){
+        return Summoners_losses;
     }
 
     @Override
@@ -72,9 +81,9 @@ public class Name_API_THREAD extends Thread implements Runnable{
 
         try {
             Summoners_tier = (String) jsonObj.get("tier");
-            Summoners_rank = (String) jsonObj.get("rank");
-            //Summoners_win = (int) jsonObj.get("win");
-            //Summoners_lose = (int) jsonObj.get("lose");
+            //Summoners_rank = (String) jsonObj.get("rank");
+            Summoners_win = (int) jsonObj.get("wins");
+            Summoners_losses = (int) jsonObj.get("losses");
         } catch (JSONException e) {
             e.printStackTrace();
         }
