@@ -1,8 +1,10 @@
 package com.example.summonerbrowser;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -20,7 +22,7 @@ import java.net.URL;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private TextView tvIcon = null;
+    private ImageView imgIcon = null;
     private TextView tvLevel = null;
     private TextView tvName = null;
 
@@ -34,7 +36,7 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         Intent intent = getIntent();
-        int summonerIcon = intent.getIntExtra("SummonerIcon",0);
+        Bitmap summonerIcon = intent.getParcelableExtra("SummonerIcon");
         int summonerLevel = intent.getIntExtra("SummonerLevel",0);
         String summonerName = intent.getStringExtra("SummonerName");
 
@@ -44,7 +46,7 @@ public class InfoActivity extends AppCompatActivity {
 
         //String summonerRank = intent.getStringExtra("SummonerRank");
 
-        tvIcon = findViewById(R.id.tv_icon);
+        imgIcon = findViewById(R.id.img_icon);
         tvLevel = findViewById(R.id.tv_level);
         tvName = findViewById(R.id.tv_name);
 
@@ -52,7 +54,7 @@ public class InfoActivity extends AppCompatActivity {
         tvWin = findViewById(R.id.tv_win);
         tvLose = findViewById(R.id.tv_lose);
 
-        tvIcon.setText(summonerIcon);
+        imgIcon.setImageBitmap(summonerIcon);
         tvLevel.setText(summonerLevel);
         tvName.setText(summonerName);
 

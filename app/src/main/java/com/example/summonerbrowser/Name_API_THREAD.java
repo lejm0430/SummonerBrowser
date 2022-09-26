@@ -39,8 +39,8 @@ public class Name_API_THREAD extends Thread implements Runnable{
     public int getSummonersLevel(){
         return Summoners_level;
     }
-    public int getSummonersIcon(){
-        return Summoners_icon;
+    public Bitmap getSummonersIcon(){
+        return Summoners_bitmap;
     }
     public String getSummonersTier(){
         return Summoners_tier;
@@ -67,7 +67,9 @@ public class Name_API_THREAD extends Thread implements Runnable{
             Summoners_level = (int) jsonObj.get("summonerLevel");
             Summoners_icon = (int) jsonObj.get("profileIconId");
             Log.e("qqq",Summoners_level+"");
-            //Summoners_bitmap = getImageFromUrl("https://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/"+getSummoners_info("icon")+".png");
+
+            //version info 10.18.1
+            Summoners_bitmap = getImageFromUrl("https://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/"+Summoners_icon+".png");
             getInfo();
         } catch (JSONException e) {
             e.printStackTrace();
