@@ -9,11 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
+        android:textColor="@color/black"
         android:text="검색하신 소환사를 찾을 수 없습니다."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="다른 이름으로 검색해주세요."/>
     
     <Button
         android:id="@+id/btn_resurch"
@@ -21,6 +32,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:text="다시 찾기"
+        android:backgroundTint="#87CEEB"
+        android:textColor="#111111"
         android:layout_gravity="center" />
 
 </LinearLayout>
