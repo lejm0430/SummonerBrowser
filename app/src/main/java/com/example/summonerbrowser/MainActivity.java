@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("SummonerLevel",apiThread.getSummonersLevel());
                     intent.putExtra("SummonerIcon",apiThread.getSummonersIcon());
                     intent.putExtra("SummonerTier",apiThread.getSummonersTier());
+                    intent.putExtra("SummonerRank",apiThread.getSummonersRank());
                     intent.putExtra("SummonerPoint",apiThread.getSummonersPoint());
                     intent.putExtra("SummonerWin",apiThread.getSummonersWin());
                     intent.putExtra("SummonerLose",apiThread.getSummonersLose());

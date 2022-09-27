@@ -91,7 +91,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
         JSONObject jsonObj = getArray(requestURL);
         try {
             Summoners_tier = (String) jsonObj.get("tier");
-            //Summoners_rank = (String) jsonObj.get("rank");
+            Summoners_rank = (String) jsonObj.get("rank");
             Summoners_point = (int) jsonObj.get("leaguePoints");
             Summoners_name = (String) jsonObj.get("summonerName");
             Summoners_win = (int) jsonObj.get("wins");

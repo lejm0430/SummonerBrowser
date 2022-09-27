@@ -50,16 +50,27 @@
         android:textColor="@color/black"/>
 
         <LinearLayout
+            android:id="@+id/layout_gamecount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/tv_name">
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="Total"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
             <TextView
                 android:id="@+id/tv_win"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_marginStart="3dp"
                 android:text="Win"
                 android:textSize="15sp"
                 android:textColor="@color/black"/>
@@ -68,12 +79,18 @@
                 android:id="@+id/tv_lose"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_weight="1"
                 android:layout_gravity="center"
+                android:layout_marginStart="3dp"
                 android:text="Lose"
                 android:textSize="15sp"
                 android:textColor="@color/black"/>
             </LinearLayout>
+        <Button
+            android:id="@+id/btn_resurch"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/layout_gamecount"
+            android:text="전적 갱신"/>
         </RelativeLayout>
     </LinearLayout>
 
@@ -89,15 +106,29 @@
             android:id="@+id/img_tier"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
         <TextView
             android:id="@+id/tv_tier"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="tier"
             android:textSize="15sp"
             android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/tv_point"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="point"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+        </LinearLayout>
     </LinearLayout>
 
 
