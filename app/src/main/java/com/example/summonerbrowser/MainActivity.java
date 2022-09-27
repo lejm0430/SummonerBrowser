@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-                    intent.putExtra("SummonerName",searchName.getText().toString());
+                    intent.putExtra("SummonerName",apiThread.getSummonerName());
                     intent.putExtra("SummonerLevel",apiThread.getSummonersLevel());
                     intent.putExtra("SummonerIcon",apiThread.getSummonersIcon());
                     intent.putExtra("SummonerTier",apiThread.getSummonersTier());
@@ -46,10 +46,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void test(String string){
-
-        //apiThread.getSummoners_level();
     }
 }

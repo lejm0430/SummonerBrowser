@@ -55,12 +55,12 @@ public class InfoActivity extends AppCompatActivity {
         tvLose = findViewById(R.id.tv_lose);
 
         imgIcon.setImageBitmap(summonerIcon);
-        tvLevel.setText(summonerLevel);
+        tvLevel.setText(String.valueOf(summonerLevel));
         tvName.setText(summonerName);
 
-        tvTier.setText(summonerTier);
-        tvWin.setText(summonerWin);
-        tvLose.setText(summonerLose);
+        tvTier.setText("Tier : " + summonerTier);
+        tvWin.setText("Win : " + summonerWin);
+        tvLose.setText("Lose : " + summonerLose);
     }
 
 
