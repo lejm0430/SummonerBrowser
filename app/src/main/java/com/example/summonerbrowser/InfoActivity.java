@@ -27,6 +27,7 @@ public class InfoActivity extends AppCompatActivity {
     private TextView tvName = null;
 
     private TextView tvTier = null;
+    private ImageView imgTier = null;
     private TextView tvWin = null;
     private TextView tvLose = null;
 
@@ -52,6 +53,7 @@ public class InfoActivity extends AppCompatActivity {
         tvName = findViewById(R.id.tv_name);
 
         tvTier = findViewById(R.id.tv_tier);
+        imgTier = findViewById(R.id.img_tier);
         tvWin = findViewById(R.id.tv_win);
         tvLose = findViewById(R.id.tv_lose);
 
@@ -59,9 +61,13 @@ public class InfoActivity extends AppCompatActivity {
         tvLevel.setText(String.valueOf(summonerLevel));
         tvName.setText(summonerName);
 
-        tvTier.setText("Tier : " + summonerTier + "(" + summonerPoint + ")");
-        tvWin.setText("Win : " + summonerWin);
-        tvLose.setText("Lose : " + summonerLose);
+        String packName = getApplicationContext().getPackageName();
+        int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
+
+        imgTier.setImageResource(tierIconId);
+        tvTier.setText("등급 : " + summonerTier + "(" + summonerPoint + ")");
+        tvWin.setText("승 : " + summonerWin);
+        tvLose.setText("패 : " + summonerLose);
     }
 
 

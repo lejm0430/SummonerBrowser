@@ -78,7 +78,6 @@ public class Name_API_THREAD extends Thread implements Runnable{
             Summoners_level = (int) jsonObj.get("summonerLevel");
             Summoners_icon = (int) jsonObj.get("profileIconId");
 
-            //version info 10.18.1
             Summoners_bitmap = getImageFromUrl("https://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/"+Summoners_icon+".png");
             getInfo();
         } catch (JSONException e) {
