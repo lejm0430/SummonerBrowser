@@ -41,6 +41,7 @@ public class InfoActivity extends AppCompatActivity {
         String summonerName = intent.getStringExtra("SummonerName");
 
         String summonerTier = intent.getStringExtra("SummonerTier");
+        int summonerPoint = intent.getIntExtra("SummonerPoint",0);
         int summonerWin = intent.getIntExtra("SummonerWin",0);
         int summonerLose = intent.getIntExtra("SummonerLose",0);
 
@@ -58,7 +59,7 @@ public class InfoActivity extends AppCompatActivity {
         tvLevel.setText(String.valueOf(summonerLevel));
         tvName.setText(summonerName);
 
-        tvTier.setText("Tier : " + summonerTier);
+        tvTier.setText("Tier : " + summonerTier + "(" + summonerPoint + ")");
         tvWin.setText("Win : " + summonerWin);
         tvLose.setText("Lose : " + summonerLose);
     }

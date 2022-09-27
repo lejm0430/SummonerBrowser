@@ -28,6 +28,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
 
     public String Summoners_name = null;
     public String Summoners_tier = null;
+    public int Summoners_point = 0;
     public String Summoners_rank = null;
     public int Summoners_win = 0;
     public int Summoners_losses = 0;
@@ -48,6 +49,9 @@ public class Name_API_THREAD extends Thread implements Runnable{
     }
     public String getSummonersTier(){
         return Summoners_tier;
+    }
+    public int getSummonersPoint(){
+        return Summoners_point;
     }
     public String getSummonersRank(){
         return Summoners_rank;
@@ -89,6 +93,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
         try {
             Summoners_tier = (String) jsonObj.get("tier");
             //Summoners_rank = (String) jsonObj.get("rank");
+            Summoners_point = (int) jsonObj.get("leaguePoints");
             Summoners_name = (String) jsonObj.get("summonerName");
             Summoners_win = (int) jsonObj.get("wins");
             Summoners_losses = (int) jsonObj.get("losses");
