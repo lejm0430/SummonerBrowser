@@ -34,6 +34,7 @@ public class InfoActivity extends AppCompatActivity {
     private TextView tvTotal = null;
     private TextView tvWin = null;
     private TextView tvLose = null;
+    private TextView tvRate = null;
 
     private Button btnResurch = null;
 
@@ -76,6 +77,7 @@ public class InfoActivity extends AppCompatActivity {
         tvTotal = findViewById(R.id.tv_total);
         tvWin = findViewById(R.id.tv_win);
         tvLose = findViewById(R.id.tv_lose);
+        tvRate = findViewById(R.id.tv_rate);
 
         btnResurch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,13 +92,15 @@ public class InfoActivity extends AppCompatActivity {
 
         String packName = getApplicationContext().getPackageName();
         int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
+        float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
         imgTier.setImageResource(tierIconId);
         tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
         tvPoint.setText("점수 : " + summonerPoint);
         tvTotal.setText((summonerWin+summonerLose)+"전");
         tvWin.setText(summonerWin+"승");
-        tvLose.setText(summonerLose+"패");
+        tvLose.setText(summonerLose+"패 ");
+        tvRate.setText("승률 : " + String.format("%.1f",rate) + "%");
     }
 
     public void reSurch(){
@@ -124,13 +128,15 @@ public class InfoActivity extends AppCompatActivity {
 
             String packName = getApplicationContext().getPackageName();
             int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
+            float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
             imgTier.setImageResource(tierIconId);
             tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
             tvPoint.setText("점수 : " + summonerPoint);
             tvTotal.setText((summonerWin+summonerLose)+"전");
             tvWin.setText(summonerWin+"승");
-            tvLose.setText(summonerLose+"패");
+            tvLose.setText(summonerLose+"패 ");
+            tvRate.setText("승률 : "+String.format("%.1f",rate) + "%");
         }
     }
 
