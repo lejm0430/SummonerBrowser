@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,11 +44,23 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("SummonerPoint",apiThread.getSummonersPoint());
                     intent.putExtra("SummonerWin",apiThread.getSummonersWin());
                     intent.putExtra("SummonerLose",apiThread.getSummonersLose());
-                    startActivity(intent);
+                    if(apiThread.getSummonerName() != null){
+                        startActivity(intent);
+                    } else{
+                        Intent intentError = new Intent(MainActivity.this, ErrorActivity.class);
+                        startActivity(intentError);
+                    }
+
                 }
 
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        searchName.setText("");
     }
 }

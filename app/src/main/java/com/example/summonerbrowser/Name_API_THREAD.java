@@ -79,7 +79,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
             Summoners_id = (String) jsonObj.get("id");
             Summoners_level = (int) jsonObj.get("summonerLevel");
             Summoners_icon = (int) jsonObj.get("profileIconId");
-
+            Summoners_name = (String) jsonObj.get("name");
             Summoners_bitmap = getImageFromUrl("https://ddragon.leagueoflegends.com/cdn/12.18.1/img/profileicon/"+Summoners_icon+".png");
             getInfo();
         } catch (JSONException e) {
@@ -92,13 +92,22 @@ public class Name_API_THREAD extends Thread implements Runnable{
         String requestURL = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+Summoners_id + "?api_key=" + TOKEN;
         JSONObject jsonObj = getArray(requestURL);
         try {
-            Summoners_league = (String) jsonObj.get("queueType");
-            Summoners_tier = (String) jsonObj.get("tier");
-            Summoners_rank = (String) jsonObj.get("rank");
-            Summoners_point = (int) jsonObj.get("leaguePoints");
-            Summoners_name = (String) jsonObj.get("summonerName");
-            Summoners_win = (int) jsonObj.get("wins");
-            Summoners_losses = (int) jsonObj.get("losses");
+            if(jsonObj != null){
+                Summoners_league = (String) jsonObj.get("queueType");
+                Summoners_tier = (String) jsonObj.get("tier");
+                Summoners_rank = (String) jsonObj.get("rank");
+                Summoners_point = (int) jsonObj.get("leaguePoints");
+                Summoners_win = (int) jsonObj.get("wins");
+                Summoners_losses = (int) jsonObj.get("losses");
+            } else{
+                Summoners_league = null;
+                Summoners_tier = null;
+                Summoners_rank = "정보 없음";
+                Summoners_point = 0;
+                Summoners_win = 0;
+                Summoners_losses = 0;
+            }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

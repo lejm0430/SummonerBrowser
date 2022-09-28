@@ -61,11 +61,17 @@ public class InfoActivity extends AppCompatActivity {
         summonerLevel = intent.getIntExtra("SummonerLevel",0);
         summonerName = intent.getStringExtra("SummonerName");
 
-        if(intent.getStringExtra("SummonerLeague").contains("SOLO")){
-            summonerLeague = "솔로랭크 5X5";
+        if(intent.getStringExtra("SummonerLeague") != null){
+            if(intent.getStringExtra("SummonerLeague").contains("SOLO")){
+                summonerLeague = "솔로랭크 5X5";
+            }else{
+                summonerLeague = "자유랭크 5X5";
+            }
         }else{
-            summonerLeague = "자유랭크 5X5";
+            summonerLeague = null;
         }
+
+
         summonerTier = intent.getStringExtra("SummonerTier");
         summonerPoint = intent.getIntExtra("SummonerPoint",0);
         summonerWin = intent.getIntExtra("SummonerWin",0);
@@ -98,18 +104,29 @@ public class InfoActivity extends AppCompatActivity {
         tvLevel.setText("레벨 : "+summonerLevel);
         tvName.setText(summonerName);
 
-        String packName = getApplicationContext().getPackageName();
-        int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
         float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
-        tvLeague.setText(summonerLeague);
-        imgTier.setImageResource(tierIconId);
-        tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
-        tvPoint.setText("점수 : " + summonerPoint);
-        tvTotal.setText((summonerWin+summonerLose)+"전");
-        tvWin.setText(summonerWin+"승");
-        tvLose.setText(summonerLose+"패 ");
-        tvRate.setText("승률 : " + String.format("%.1f",rate) + "%");
+        if(summonerLeague == null){
+            tvLeague.setText("리그 : Unranked");
+            imgTier.setVisibility(View.GONE);
+            tvTier.setVisibility(View.INVISIBLE);
+            tvPoint.setVisibility(View.INVISIBLE);
+            tvTotal.setText((summonerWin+summonerLose)+"전");
+            tvWin.setText(summonerWin+"승");
+            tvLose.setText(summonerLose+"패 ");
+            tvRate.setText("승률 : " + String.format("%.1f",rate) + "%");
+        }else{
+            String packName = getApplicationContext().getPackageName();
+            int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
+            tvLeague.setText("리그 : " + summonerLeague);
+            imgTier.setImageResource(tierIconId);
+            tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
+            tvPoint.setText("점수 : " + summonerPoint);
+            tvTotal.setText((summonerWin+summonerLose)+"전");
+            tvWin.setText(summonerWin+"승");
+            tvLose.setText(summonerLose+"패 ");
+            tvRate.setText("승률 : " + String.format("%.1f",rate) + "%");
+        }
     }
 
     public void reSurch(){
@@ -125,11 +142,16 @@ public class InfoActivity extends AppCompatActivity {
             summonerLevel = apiThread.getSummonersLevel();
             summonerName = apiThread.getSummonerName();
 
-            if(apiThread.getSummonersLeague().contains("SOLO")){
-                summonerLeague = "솔로랭크 5X5";
-            }else{
-                summonerLeague = "자유랭크 5X5";
+            if(apiThread.getSummonersLeague() != null){
+                if(apiThread.getSummonersLeague().contains("SOLO")){
+                    summonerLeague = "솔로랭크 5X5";
+                }else{
+                    summonerLeague = "자유랭크 5X5";
+                }
+            } else {
+                summonerLeague = null;
             }
+
             summonerTier = apiThread.getSummonersTier();
             summonerPoint = apiThread.getSummonersPoint();
             summonerWin = apiThread.getSummonersWin();
@@ -140,18 +162,31 @@ public class InfoActivity extends AppCompatActivity {
             tvLevel.setText("레벨 : "+summonerLevel);
             tvName.setText(summonerName);
 
-            String packName = getApplicationContext().getPackageName();
-            int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
             float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
-            tvLeague.setText(summonerLeague);
-            imgTier.setImageResource(tierIconId);
-            tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
-            tvPoint.setText("점수 : " + summonerPoint);
-            tvTotal.setText((summonerWin+summonerLose)+"전");
-            tvWin.setText(summonerWin+"승");
-            tvLose.setText(summonerLose+"패 ");
-            tvRate.setText("승률 : "+String.format("%.1f",rate) + "%");
+            if(summonerLeague == null){
+                tvLeague.setText("리그 : Unranked");
+                imgTier.setVisibility(View.GONE);
+                tvTier.setVisibility(View.INVISIBLE);
+                tvPoint.setVisibility(View.INVISIBLE);
+                tvTotal.setText((summonerWin+summonerLose)+"전");
+                tvWin.setText(summonerWin+"승");
+                tvLose.setText(summonerLose+"패 ");
+                tvRate.setText("승률 : " + String.format("%.1f",rate) + "%");
+            } else {
+                String packName = getApplicationContext().getPackageName();
+                int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
+
+                tvLeague.setText("리그 : " + summonerLeague);
+                imgTier.setImageResource(tierIconId);
+                tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
+                tvPoint.setText("점수 : " + summonerPoint);
+                tvTotal.setText((summonerWin+summonerLose)+"전");
+                tvWin.setText(summonerWin+"승");
+                tvLose.setText(summonerLose+"패 ");
+                tvRate.setText("승률 : "+String.format("%.1f",rate) + "%");
+            }
+
         }
     }
 
