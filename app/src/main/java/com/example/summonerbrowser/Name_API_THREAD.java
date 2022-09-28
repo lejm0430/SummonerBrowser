@@ -27,6 +27,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
     public Bitmap Summoners_bitmap = null;
 
     public String Summoners_name = null;
+    public String Summoners_league = null;
     public String Summoners_tier = null;
     public int Summoners_point = 0;
     public String Summoners_rank = null;
@@ -47,6 +48,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
     public Bitmap getSummonersIcon(){
         return Summoners_bitmap;
     }
+    public String getSummonersLeague(){return Summoners_league;}
     public String getSummonersTier(){
         return Summoners_tier;
     }
@@ -90,6 +92,7 @@ public class Name_API_THREAD extends Thread implements Runnable{
         String requestURL = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/"+Summoners_id + "?api_key=" + TOKEN;
         JSONObject jsonObj = getArray(requestURL);
         try {
+            Summoners_league = (String) jsonObj.get("queueType");
             Summoners_tier = (String) jsonObj.get("tier");
             Summoners_rank = (String) jsonObj.get("rank");
             Summoners_point = (int) jsonObj.get("leaguePoints");

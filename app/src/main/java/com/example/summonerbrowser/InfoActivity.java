@@ -28,6 +28,7 @@ public class InfoActivity extends AppCompatActivity {
     private TextView tvLevel = null;
     private TextView tvName = null;
 
+    private TextView tvLeague = null;
     private TextView tvTier = null;
     private ImageView imgTier = null;
     private TextView tvPoint = null;
@@ -41,6 +42,7 @@ public class InfoActivity extends AppCompatActivity {
     private Bitmap summonerIcon = null;
     private int summonerLevel = 0;
     private String summonerName = null;
+    private String summonerLeague = null;
     private String summonerTier = null;
     private int summonerPoint = 0;
     private int summonerWin = 0;
@@ -59,6 +61,11 @@ public class InfoActivity extends AppCompatActivity {
         summonerLevel = intent.getIntExtra("SummonerLevel",0);
         summonerName = intent.getStringExtra("SummonerName");
 
+        if(intent.getStringExtra("SummonerLeague").contains("SOLO")){
+            summonerLeague = "솔로랭크 5X5";
+        }else{
+            summonerLeague = "자유랭크 5X5";
+        }
         summonerTier = intent.getStringExtra("SummonerTier");
         summonerPoint = intent.getIntExtra("SummonerPoint",0);
         summonerWin = intent.getIntExtra("SummonerWin",0);
@@ -71,6 +78,7 @@ public class InfoActivity extends AppCompatActivity {
         tvLevel = findViewById(R.id.tv_level);
         tvName = findViewById(R.id.tv_name);
 
+        tvLeague = findViewById(R.id.tv_league);
         tvTier = findViewById(R.id.tv_tier);
         imgTier = findViewById(R.id.img_tier);
         tvPoint = findViewById(R.id.tv_point);
@@ -94,6 +102,7 @@ public class InfoActivity extends AppCompatActivity {
         int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
         float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
+        tvLeague.setText(summonerLeague);
         imgTier.setImageResource(tierIconId);
         tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
         tvPoint.setText("점수 : " + summonerPoint);
@@ -116,6 +125,11 @@ public class InfoActivity extends AppCompatActivity {
             summonerLevel = apiThread.getSummonersLevel();
             summonerName = apiThread.getSummonerName();
 
+            if(apiThread.getSummonersLeague().contains("SOLO")){
+                summonerLeague = "솔로랭크 5X5";
+            }else{
+                summonerLeague = "자유랭크 5X5";
+            }
             summonerTier = apiThread.getSummonersTier();
             summonerPoint = apiThread.getSummonersPoint();
             summonerWin = apiThread.getSummonersWin();
@@ -130,6 +144,7 @@ public class InfoActivity extends AppCompatActivity {
             int tierIconId = getApplicationContext().getResources().getIdentifier("emblem_"+summonerTier.toLowerCase(),"drawable",packName);
             float rate = ((float)summonerWin/((float)summonerWin+(float)summonerLose))*100;
 
+            tvLeague.setText(summonerLeague);
             imgTier.setImageResource(tierIconId);
             tvTier.setText("등급 : " + summonerTier + " " + summonerRank);
             tvPoint.setText("점수 : " + summonerPoint);

@@ -123,9 +123,17 @@
             android:gravity="center"
             android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_league"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="league"
+            android:textSize="15sp"
+            android:textColor="@color/black"/>
+        <TextView
             android:id="@+id/tv_tier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="tier"
             android:textSize="15sp"
             android:textColor="@color/black"/>
